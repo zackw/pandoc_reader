@@ -1,25 +1,23 @@
 pandoc_reader
 =============
 
-A pandoc [markdown] reader plugin for [pelican]
+A pandoc [markdown][] reader plugin for [pelican][]
 
 
 Requirements
 ------------
 
-  - [pandoc] in $PATH
-
+  - [pandoc][] in `$PATH`
 
 Installation
 ------------
 
 Instructions for installation of pelican plugins can be obtained from the [pelican plugin manual](https://github.com/getpelican/pelican-plugins/blob/master/Readme.rst).
 
-
 Configuration
 -------------
 
-Additional command line parameters can be passed to pandoc via the PANDOC_ARGS parameter.
+Additional command line parameters can be passed to pandoc via the `PANDOC_ARGS` parameter.
 
     PANDOC_ARGS = [
       '--mathjax',
@@ -29,13 +27,18 @@ Additional command line parameters can be passed to pandoc via the PANDOC_ARGS p
       '--number-sections',
     ]
 
-Pandoc's markdown extensions can be enabled or disabled via the
-PANDOC_EXTENSIONS parameter.
+Pandoc's syntactic extensions to Markdown can be enabled or disabled via the
+`PANDOC_EXTENSIONS` parameter.
 
     PANDOC_EXTENSIONS = [
       '+hard_line_breaks',
       '-citations'
     ]
+
+File Metadata
+-------------
+
+For compatibility with older versions of this plugin that parsed MultiMarkdown-like title blocks internally, the [`mmd_title_block`][mmd_title_block] syntax extension is enabled by default.  Unfortunately, this causes Pandoc to misinterpret YAML metadata and possibly also native title blocks (see [Pandoc issue 2026][]).  Therefore, those metadata formats are *disabled* by default.  To revert to Pandoc's default behavior (accepting native title blocks and YAML metadata, but not MMD title blocks), include `-mmd_title_block` in `PANDOC_EXTENSIONS`.
 
 Contributing
 ------------
@@ -50,3 +53,5 @@ Contributing
 [markdown]: http://daringfireball.net/projects/markdown/
 [pandoc]: http://johnmacfarlane.net/pandoc/
 [pelican]: http://getpelican.com
+[mmd_title_block]: http://johnmacfarlane.net/pandoc/README.html#extension-mmd_title_block
+[Pandoc issue 2026]: https://github.com/jgm/pandoc/issues/2026
