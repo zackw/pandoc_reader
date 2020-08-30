@@ -1,0 +1,8 @@
+$-- Pandoc document template for use with pandoc_reader.
+$-- The pandoc_reader plugin repurposes "standalone" mode to get
+$-- Pandoc to prepend all of the metadata, in JSON format, to the
+$-- rendered document. This document template is necessary for that
+$-- to work, and the plugin expects it will contain only the two
+$-- non-comment lines below.
+$meta-json$
+$body$

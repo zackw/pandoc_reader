@@ -20,24 +20,47 @@ and available via `$PATH`.
 
 ## Configuration
 
-Additional command line parameters can be passed to pandoc via the
-PANDOC_ARGS parameter.
+To configure Pandoc, use the `pelican-pandoc-reader-config` utility
+(which is installed along with this plugin) to extract the built-in
+Pandoc “user data directory” to a location within your website’s
+source tree.  In your Pelican configuration, set `PANDOC_CFG` to point
+to the extracted directory.  Then edit the file `defaults/pelican.yaml`
+within the extracted directory.  See comments in that file for further
+instructions.
 
-    PANDOC_ARGS = [
-      '--mathjax',
-      '--smart',
-      '--toc',
-      '--toc-depth=2',
-      '--number-sections',
-    ]
+Older versions of this plugin offered Pelican configuration settings
+named `PANDOC_ARGS` and `PANDOC_EXTENSIONS`.  These settings are no
+longer supported.  We believe that you can get all of the same effects
+by editing `defaults/pelican.yaml`.  Entries in `PANDOC_ARGS`
+correspond to various named keys at the top level of
+`defaults/pelican.yaml`. Entries in the `PANDOC_EXTENSIONS` array
+should become annotations on the `from: markdown` line.  If you
+discover that something you used to be able to do is no longer
+possible, please file a bug report and let us know.
 
-Pandoc's markdown extensions can be enabled or disabled via the
-PANDOC_EXTENSIONS parameter.
+You can also put anything else in this directory that goes in a Pandoc
+user data directory.  In particular, Pandoc “filters” should be added
+the `filters` subdirectory of the extracted directory.  One important
+exception is that the file `templates/pelican.html5` should not be
+modified; the plugin relies on it remaining exactly as is.
 
-    PANDOC_EXTENSIONS = [
-      '+hard_line_breaks',
-      '-citations'
-    ]
+## Server-side KaTeX
+
+We provide a sample Pandoc filter, `filters/serverside-katex.lua`,
+which offers an alternative means of using [KaTeX][] to render
+mathematics.  Unlike Pandoc’s built-in KaTeX support
+(`html-math-method: katex`), it does not require the client to run
+JavaScript.  Instead, it requires the `katex` command-line utility
+to be available (e.g. via `npm install katex`) when the site is
+rendered.  You will still need to use the HTML5 doctype in your
+templates, and load KaTeX’s *style sheet* (CSS file) on each page
+containing math.
+
+To use the filter, uncomment the line referencing
+`serverside-katex.lua` in the filters list in `pelican.yaml`.
+This will override any `html-math-method` setting.
+
+[KaTeX]: https://katex.org/
 
 ## Contributing
 

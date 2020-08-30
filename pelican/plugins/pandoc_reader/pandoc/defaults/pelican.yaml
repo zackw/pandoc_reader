@@ -1,0 +1,123 @@
+## Pandoc defaults file for use with Pelican (via pandoc_reader). ##
+# Only the settings that are meaningful for Markdown input and HTML5 output
+# are listed in this file.
+
+# To change the set of Pandoc extensions to Markdown that are enabled,
+# append +extension and/or -extension to the word "markdown" as you see fit.
+# See https://pandoc.org/MANUAL.html#extensions for extension documentation.
+from: markdown
+
+# Metadata to apply to all files.
+# String values are interpreted as plain text, not markdown.
+#metadata:
+#  author: "Your Name"
+#  bibliography: bib-database.yml
+#  csl: apa-style.csl
+
+# Can also supply boilerplate metadata from an external file
+# which will be parsed the same as a YAML metadata block
+# (i.e. string values *are* interpreted as markdown).
+#metadata-files:
+# - boilerplate.yaml
+
+# Pandoc filters.
+# Filters with a .lua extension are assumed to be Lua filters,
+# others are assumed to be external JSON fiters.
+# See https://pandoc.org/filters.html and https://pandoc.org/lua-filters.html
+#filters:
+# - serverside-katex.lua
+# - pandoc-citeproc
+
+# Math handling.
+# method is plain, webtex, gladtex, mathml, mathjax, katex
+# you may specify a url with webtex, mathjax, katex
+# see also plugins/serverside-katex.lua for katex with no client side JS
+html-math-method:
+   method: mathml
+#   method: mathjax
+#   url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+
+# Syntax highlighting (for fenced code blocks tagged with a language name).
+# See https://pandoc.org/MANUAL.html#syntax-highlighting for instructions
+# on how to modify the highlight theme and add syntax definitions.
+# pandoc --list-highlight-languages prints all the built-in syntax tags.
+#highlight-style: pygments
+#syntax-definitions:
+# - c.xml
+
+
+# Input format tweaks.
+# Normal column width for text.  Only affects the parsing of pipe tables
+# (see https://pandoc.org/MANUAL.html#tables)
+columns: 78
+# when expanding tabs, put the tab stops this many columns apart
+tab-stop: 8
+# file listing abbreviations, like "e.g." and "Mr.", that should
+# automatically have the space after be made non-breaking.
+# pandoc --print-default-data-file=abbreviations prints the default list.
+abbreviations:
+# Should HTML comments in the Markdown source be removed from the output?
+strip-comments: false
+# Adjust the depth of heading levels.  May be a positive or negative number.
+# The default is 1, which makes level-1 Markdown headings into <h2>'s,
+# reserving <h1> for the page title.
+shift-heading-level-by: 1
+# Default extension to use when image paths/URLs have no extension.
+default-image-extension: ".jpg"
+
+# HTML output tweaks.
+email-obfuscation: none  # none, references, or javascript
+# Convert "..." and '...' to <q>...</q>?
+html-q-tags: true
+# Wrap a <section> tag around each section?
+section-divs: true
+# List of HTML classes to apply to all indented code blocks.
+indented-code-classes: []
+# Prefix to add to all id="" attributes.  No separator is supplied,
+# e.g. `identifier-prefix: foo` will produce <h2 id="foobar"> from `## Bar`.
+identifier-prefix: ""
+# Should sections be numbered?
+number-sections: false
+# Offsets for section numbers: the first number is added to the section
+# number for top-level headings, the second to the number for second-level
+# headings, and so on.  Any nonzero value in this list implies
+# number-sections: true.
+#number-offset: [0,0,0,0,0,0]
+
+# Arbitrary Pandoc "variables" can be set here
+# See https://pandoc.org/MANUAL.html#variables
+#variables:
+
+# Troubleshooting.
+# ERROR (equivalent to --quiet), WARNING, INFO (equivalent to --verbose)
+verbosity: WARNING
+fail-if-warnings: false
+trace: false
+# uncomment the next line for even more detailed debugging logs:
+# log-file: pandoc-debug-log.json
+
+
+## DO NOT CHANGE THE SETTINGS BELOW THIS POINT ##
+# The pandoc_reader plugin relies on the settings below having
+# the values shown.
+to: html5
+template: pelican
+standalone: true
+self-contained: false
+file-scope: false
+preserve-tabs: false
+ascii: false
+wrap: none
+eol: lf
+table-of-contents: false
+title-prefix: ""
+output-file: # blank - stdout
+input-files: # blank - stdin
+include-before-body: []
+include-after-body: []
+include-in-header: []
+resource-path: []
+css: []
+dump-args: false
+ignore-args: false
+# data-dir: is specified on the command line
