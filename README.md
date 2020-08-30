@@ -50,17 +50,21 @@ We provide a sample Pandoc filter, `filters/serverside-katex.lua`,
 which offers an alternative means of using [KaTeX][] to render
 mathematics.  Unlike Pandoc’s built-in KaTeX support
 (`html-math-method: katex`), it does not require the client to run
-JavaScript.  Instead, it requires the `katex` command-line utility
-to be available (e.g. via `npm install katex`) when the site is
-rendered.  You will still need to use the HTML5 doctype in your
-templates, and load KaTeX’s *style sheet* (CSS file) on each page
-containing math.
+JavaScript.  Instead, it requires the `katex` command-line utility to
+be available (e.g. via `npm install katex`) when the site is rendered.
+You will still need to use the HTML5 doctype in your templates, and
+load KaTeX’s *style sheet* (CSS file) on each page containing math.
+The filter adds a property named `has_math` to the page metadata when
+it finds math on the page.  (Due to [bugs in Pandoc][], this property
+is not a boolean.  It will have the *string* value `"true"` when there
+is math, and it will not be present at all when there is no math.)
 
 To use the filter, uncomment the line referencing
 `serverside-katex.lua` in the filters list in `pelican.yaml`.
 This will override any `html-math-method` setting.
 
 [KaTeX]: https://katex.org/
+[bugs in Pandoc]: https://github.com/jgm/pandoc/issues?q=6288+6630+6650
 
 ## Contributing
 
