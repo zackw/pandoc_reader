@@ -1,3 +1,13 @@
-*.pyc
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+poetry.lock
+dist/
+
+# Editors (various)
 .idea
+.#*
+\#*#
 *~

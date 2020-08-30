@@ -1,25 +1,27 @@
-pandoc_reader
-=============
+# pandoc_reader: use Pandoc as a Markdown engine for Pelican
 
-A pandoc [markdown] reader plugin for [pelican]
+[![Build Status](https://img.shields.io/github/workflow/status/pelican-plugins/pandoc_reader/build)](https://github.com/zackw/pandoc_reader/actions) [![PyPI Version](https://img.shields.io/pypi/v/pelican-pandoc_reader)](https://pypi.org/project/pelican-pandoc_reader/)
 
+This plugin gives [Pelican][] support for rendering [Markdown][]
+with the [Pandoc][] utility.
 
-Requirements
-------------
+[Markdown]: http://daringfireball.net/projects/markdown/
+[Pandoc]: http://johnmacfarlane.net/pandoc/
+[Pelican]: http://getpelican.com
 
-  - [pandoc] in $PATH
+## Installation
 
+This plugin can be installed via:
 
-Installation
-------------
+    python -m pip install pelican-pandoc-reader
 
-Instructions for installation of pelican plugins can be obtained from the [pelican plugin manual](https://github.com/getpelican/pelican-plugins/blob/master/Readme.rst).
+You must also make sure the `pandoc` command-line utility is installed
+and available via `$PATH`.
 
+## Configuration
 
-Configuration
--------------
-
-Additional command line parameters can be passed to pandoc via the PANDOC_ARGS parameter.
+Additional command line parameters can be passed to pandoc via the
+PANDOC_ARGS parameter.
 
     PANDOC_ARGS = [
       '--mathjax',
@@ -37,16 +39,17 @@ PANDOC_EXTENSIONS parameter.
       '-citations'
     ]
 
-Contributing
-------------
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+## Contributing
 
 
-[markdown]: http://daringfireball.net/projects/markdown/
-[pandoc]: http://johnmacfarlane.net/pandoc/
-[pelican]: http://getpelican.com
+Contributions are welcome and much appreciated. Every little bit
+helps. You can contribute by improving the documentation, adding
+missing features, and fixing bugs. You can also help out by reviewing
+and commenting on [existing issues][].
+
+To start contributing to this plugin, review the [Contributing to
+Pelican][] documentation, beginning with the **Contributing Code**
+section.
+
+[existing issues]: https://github.com/zackw/pandoc_reader/issues
+[Contributing to Pelican]: https://docs.getpelican.com/en/latest/contribute.html
